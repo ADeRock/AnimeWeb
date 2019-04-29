@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head> 
     <body style = background-color:darksalmon>
+        <div class="container-fluid">
+
         <form>
             <div class="jumbotron" style = background-color:mintcream>
                     <h1 class="display-4">What Anime Do You Know?</h1>
@@ -15,22 +17,63 @@
                     <hr class="my-4">
                     <p>Anime is one of my favorite things to watch so I was wondering what your experiences are if you have any with Anime!</p>
                       </div>
-                      <img style="border:0px solid black;" src="Naruto.gif" width="300" height="300">
-            <div class="form-group">
+                    </form>
+                <form id="set1">
+                    <img style="border:0px solid black;" src="Naruto.gif" width="300" height="300">
+                    <div class="form-group">
                     <label for="exampleInputEmail1">What is your experiences with Naruto?</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
-                </div>
-                <img src="DBZ.gif" width="300" height="300"> 
-            <div class="form-group">
-                        <label for="exampleInputEmail1">What is your experiences with Dragon Ball Z?</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
                     </div>
-                <img src="HXH3.gif" width="350" height="200"> 
-                <div class="form-group">
-                        <label for="exampleInputEmail1">What is your experiences with Hunter X Hunter?</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="next1" onclick="displayNextQuestions(1)">Next</button>
+                        </form>
+                <form id="set2"style="display:none;">
+                    <img src="DBZ.gif" width="300" height="300"> 
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">What is your experiences with Dragon Ball Z?</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
                     </div>
-                <button type="button" class="btn btn-primary">Submit</button>
-        </form>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="next2" onclick="displayNextQuestions(2)">Next</button>
+                        </form>
+                <form id="set3"style="display:none;">
+                    <img src="HXH3.gif" width="350" height="200"> 
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">What is your experiences with Hunter X Hunter?</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
+                    </div>
+                    <button type="button"  class="btn btn-primary btn-lg btn-block" onclick="done()">Submit</button>
+                    </form>
+                    <div id="thanks" name="thanks" class="alert alert-primary" role="alert" style="display:none;">
+                            Thanks for submitting your answers to this form.
+                        </div>
+                    </form>
+        <script>
+                function displayNextQuestions(set) {
+                // set is which set of questions was just displayed
+                if (set > 0 && set < 3) {
+                    // stop displaying the current next button 
+                    var lastButton = document.getElementById("next"+set);
+                    lastButton.style.display = "none";
+                    // start displaying the next set (questions+button)
+                    var nextQuestions = document.getElementById("set"+(set+1));
+                    nextQuestions.style.display = "block";
+
+                    // automatically scroll down to new questions
+                    window.location = "#set"+(set+1);
+                }
+            }
+
+            function done() {
+                // let user know that these answers are DISAPPEARING FOREVER
+                alert('Where do these answers get stored?');
+                // stop displaying all of the alerts, questions, and buttons 
+                for (var i = 1; i < 4; i = i + 1) {
+                    var nextQuestions = document.getElementById("set"+i);
+                    nextQuestions.style.display = "none";
+                }
+                // start displaying the thanks alert
+                var thanksAlert = document.getElementById("thanks");
+                thanksAlert.style.display = "block";
+            }
+            </script>
     </body>
 </html>
