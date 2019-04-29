@@ -1,40 +1,36 @@
 <html>
-    <title>Anime Quiz</title>
-    <head style="font-family:courier;" style="font-size:75%;"> What Anime Do You Know? </head> 
+    <title></title>
+    <head style="font-family:courier;" style="font-size:75%;"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head> 
     <body style = background-color:darksalmon>
-        <p> Anime is one of my favorite things to watch so I was wondering what your experiences are if you have any with Anime. </p>
-    <table> 
-        <tr> 
-            <td style="border:0px solid black;"> <img src="Naruto.gif" width="300" height="300"> 
-                <p> What is your experiences with Naruto? </p>
-                <textarea> </textarea>
-            </td>
-            </tr>
-        </table>
-
-    <table>
-        <tr> 
-            <td style="border:0px solid black;"> <img src="DBZ.gif" width="300" height="300"> 
-                <p> What is your experiences with Dragon Ball Z? </p>
-                <textarea> </textarea>
-            </td>
-            </tr>
-        </table>
-    <table>
-        <tr> 
-            <td style="border:0px solid black;"> <img src="HXH3.gif" width="350" height="200"> 
-                <p> What is your experiences with Hunter X Hunter? </p>
-                <textarea> </textarea>
-            </td>
-            </tr>
-        </table>
-    <table>
-        <tr>
-        <td> <button onclick="alert('Where do these answers get stored?');">
-        Submit
-            </button>  
-        </td>
-        </tr>
-        </table>
+        <form>
+            <div class="jumbotron" style = background-color:mintcream>
+                    <h1 class="display-4">What Anime Do You Know?</h1>
+                    <p class="lead">Anime Quiz!</p>
+                    <hr class="my-4">
+                    <p>Anime is one of my favorite things to watch so I was wondering what your experiences are if you have any with Anime!</p>
+                      </div>
+                      <img style="border:0px solid black;" src="Naruto.gif" width="300" height="300">
+            <div class="form-group">
+                    <label for="exampleInputEmail1">What is your experiences with Naruto?</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
+                </div>
+                <img src="DBZ.gif" width="300" height="300"> 
+            <div class="form-group">
+                        <label for="exampleInputEmail1">What is your experiences with Dragon Ball Z?</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
+                    </div>
+                <img src="HXH3.gif" width="350" height="200"> 
+                <div class="form-group">
+                        <label for="exampleInputEmail1">What is your experiences with Hunter X Hunter?</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your response">
+                    </div>
+                <button type="button" class="btn btn-primary">Submit</button>
+        </form>
     </body>
 </html>
