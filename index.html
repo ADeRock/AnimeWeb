@@ -145,7 +145,8 @@
 
             function done() {
                 // let user know that these answers are DISAPPEARING FOREVER
-                alert('');
+                var dataObjectAsString = window.localStorage.getItem("data");
+                alert('' + dataObjectAsString);
                 // stop displaying all of the alerts, questions, and buttons 
                 for (var i = 1; i < 4; i = i + 1) {
                     var nextQuestions = document.getElementById("set"+i);
