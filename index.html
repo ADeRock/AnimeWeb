@@ -26,15 +26,23 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block" id="next1" onclick="displayNextQuestions(1)">Next</button>
                         </form>
-                <form id="set2"style="display:none;" onsubmit="saveToLocalStorage()">
+                <form id="set2" style="display:none;">
+                    <div class="form-group">
+                    <label for="Interests">Type an Anime that interests you</label>
+                    <input type="text" class="form-control" id="NA1" placeholder="Enter your response">
+                    <button type="submit" onclick="checkAnime()" class="btn btn-primary btn-lg btn-block" >Push</button>
+                    <textarea type="text" class="form-control" id= "na" rows="25"></textarea>
+                    <br> <button type="submit" class="btn btn-primary btn-lg btn-block" id="next2" onclick="displayNextQuestions(2)">Next</button> </br>
+                        </form>
+                <form id="set3"style="display:none;" onsubmit="saveToLocalStorage()">
                     <img src="DBZ.gif" width="300" height="300"> 
                     <div class="form-group">
                     <label for="DBZ">What is your experiences with Dragon Ball Z?</label>
                     <input type="text" class="form-control" id="DBZ" placeholder="Enter your response">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="next2" onclick="displayNextQuestions(2)">Next</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="next3" onclick="displayNextQuestions(3)">Next</button>
                         </form>
-                <form id="set3" style="display:none;" onsubmit="saveToLocalStorage()">
+                <form id="set4" style="display:none;" onsubmit="saveToLocalStorage()">
                     <img src="HXH3.gif" width="350" height="200"> 
                     <div class="form-group">
                     <label for="HXH">What is your experiences with Hunter X Hunter?</label>
@@ -130,7 +138,7 @@
 
             function displayNextQuestions(set) {
                 // set is which set of questions was just displayed
-                if (set > 0 && set < 3) {
+                if (set > 0 && set < 4) {
                     // stop displaying the current next button 
                     var lastButton = document.getElementById("next"+set);
                     lastButton.style.display = "none";
@@ -142,6 +150,42 @@
                     window.location = "#set"+(set+1);
                 }
             }
+
+            var getJSON = function(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'json';
+                xhr.onload = function() {
+                    var status = xhr.status;
+                    if (status === 200) {
+                        callback(null, xhr.response);
+                    } else {
+                        callback(status, xhr.response);
+                    }
+                };
+                xhr.send();
+            };
+
+
+            function checkAnime() {
+                var naAnime = document.getElementById('na');
+                var nameA = document.getElementById('NA1');
+                getJSON('https://api.jikan.moe/v3/search/anime?q=' + NA1.value,
+                function(err, data) {
+                    if (err !== null) {
+                        alert('Anime API went wrong: ' + err);
+                    } else {
+                        console.log(data.results);                     
+                        var title = '';
+                        var synopsis = '';
+                        for (var i = 0; i < data.results.length; i = i + 1) {
+                            naAnime.value += data.results[i].title +":"+ '\n';
+                            naAnime.value += data.results[i].synopsis + '\n' + '\n';
+                        }
+                    }
+                });            
+            }
+
 
             function done() {
                 // let user know that these answers are DISAPPEARING FOREVER
